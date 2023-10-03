@@ -169,7 +169,8 @@ public class LinkedTree<E> implements NAryTree<E> {
                 queu.add(node);
                 while(!queu.isEmpty()){
                     TreeNode<E> toExplore = queu.remove(index:0);
-
+                    positions.add(toExplore);
+                    queu.addAll(node.getChildren());
                 }
 
             }
