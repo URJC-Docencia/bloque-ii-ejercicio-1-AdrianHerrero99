@@ -18,7 +18,19 @@ public class LinkedTree<E> implements NAryTree<E> {
      * @param <T> the type of element stored in the node
      */
     private class TreeNode<T> implements Position<T> {
+        private List<TreeNode<T>> children;
+        private TreeNode<T> parent;
+        private T element;
+        
+        public TreeNode(T element){
+            this.element=element;
+        }
 
+        public TreeNode(T element, TreeNode<T> parent){
+            this.element=element;
+            this.parent=parent;
+        }
+        
         @Override
         public T getElement() {
             throw new UnsupportedOperationException("Not supported yet.");
