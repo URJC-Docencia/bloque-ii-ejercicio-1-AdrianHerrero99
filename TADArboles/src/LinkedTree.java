@@ -77,7 +77,7 @@ public class LinkedTree<E> implements NAryTree<E> {
 
     @Override
     public E replace(Position<E> p, E e) {
-        TrreNode<E> node = checkPosition(p);
+        TreeNode<E> node = checkPosition(p);
         E old = node.getElement();
         node.element=e;
         return old;
@@ -85,12 +85,33 @@ public class LinkedTree<E> implements NAryTree<E> {
 
     @Override
     public void remove(Position<E> p) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        TreeNode<E> node = checkPosition(p);
+        if(node==root){
+            root=null;
+            size=0;
+        }
+        else{
+            TreeNode<E> parent = node.getparent();
+            parent.getChildren().remove(node);
+            size-=computeSize(node);
+        }
+        return size;
+        
+    }
+
+    private int computeSize(TreeNode<E> node){
+        int size = 1;
+        for(TreeNode<E> child : node.getChildren()){
+            size+= computeSize(child);
+        }
     }
 
     @Override
     public NAryTree<E> subTree(Position<E> v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        TreeNode<E> node = checkPosition(v);
+        LinkedTree<E> tree = new LinkedTree<>();
+        this.root= 
+        
     }
 
     @Override
@@ -135,7 +156,24 @@ public class LinkedTree<E> implements NAryTree<E> {
 
     @Override
     public Iterator<Position<E>> iterator() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //comprobar si esta vacio
+        List<Position<E>> positions = new ArrayList<>();
+        breadthOrder(root, positions;
+        return positions.iterator();
+        
+    }
+
+    private void breadth(TreeNode<E> root, List<Position<E>> positions){
+            if(root!= null){
+                List<TrreNode> queu = new ArrayList<>();
+                queu.add(node);
+                while(!queu.isEmpty()){
+                    TreeNode<E> toExplore = queu.remove(index:0);
+
+                }
+
+            }
+
     }
 
     public int size() {
