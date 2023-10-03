@@ -1,3 +1,4 @@
+
 import material.Position;
 
 import java.util.Iterator;
@@ -37,10 +38,16 @@ public class LinkedTree<E> implements NAryTree<E> {
         }
 
     }
+    private TreeNode<E> root;
+    private int size;
 
     @Override
     public Position<E> addRoot(E e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(!isEmpty()){
+            throw_new_RuntimeException("The tree has already a root node");
+        }
+        root=new TreeNode<>(e);
+        
     }
 
     @Override
