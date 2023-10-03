@@ -19,7 +19,7 @@ public class LinkedTree<E> implements NAryTree<E> {
      * @param <T> the type of element stored in the node
      */
     private class TreeNode<T> implements Position<T> {
-        private List<TreeNode<T>> children;
+        private List<TreeNode<T>> children = new ArrayList<>();;
         private TreeNode<T> parent;
         private T element;
         
@@ -57,22 +57,30 @@ public class LinkedTree<E> implements NAryTree<E> {
         TreeNode<E> newNode = new TreeNode<>(element,parent);
         parent.getChildren().add(newNode);
         size++;
-        return newNode,
+        return newNode;
     }
 
     @Override
     public Position<E> add(E element, Position<E> p, int n) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        TreeNode<E> parent=checkPosition(p);
+        checkPositionOfChildrenList(n,parent);
+        TreeNode<E> newNode = new TreeNode<>(element,parent);
+        parent.getChildren().add(newNode);
+        size++;
+        return newNode;
     }
 
     @Override
     public void swapElements(Position<E> p1, Position<E> p2) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
     @Override
     public E replace(Position<E> p, E e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        TrreNode<E> node = checkPosition(p);
+        E old = node.getElement();
+        node.element=e;
+        return old;
     }
 
     @Override
